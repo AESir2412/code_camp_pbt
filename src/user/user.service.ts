@@ -1,7 +1,7 @@
 import { HttpException, Inject, Injectable, Scope } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserModel } from './user.model';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { UserDto } from './user.dto'
 import * as bcrypt from 'bcrypt';
 import { Request, Response, NextFunction } from 'express';
@@ -9,6 +9,7 @@ import { REQUEST } from '@nestjs/core';
 import bodyParser from 'body-parser'
 
 interface User {
+  id: mongoose.Types.ObjectId;
   username: String;
   email: String;
 }
