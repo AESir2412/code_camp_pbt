@@ -2,6 +2,6 @@ import { Module } from '@nestjs/common';
 import { GpaService } from './gpa.service';
 
 @Module({
-  providers: [GpaService]
+  providers: [GpaService],
 })
 export class GpaModule {}
