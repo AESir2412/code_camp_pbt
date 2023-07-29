@@ -5,6 +5,7 @@ import { User } from 'src/user/user.model';
 import { Model } from 'mongoose';
 import { UserService } from 'src/user/user.service';
 import { RegisterUserDto } from './dtos/auth.dto';
+import { UserDto } from 'src/user/user.dto';
 
 @Injectable()
 export class AuthService {
@@ -36,14 +37,14 @@ export class AuthService {
         });
     }
 
-    async registerUser(user: RegisterUserDto) {
+    async registerUser(user: UserDto) {
         try {
 
             //Create new user in database:
-            const newUser = await this.userService.create(user);
+            const newUser = await this.userService.createUser(user);
 
             return this.generateJwt({
-                sub: newUser.id,
+                // sub: newUser.id,
                 email: newUser.email
             });
             

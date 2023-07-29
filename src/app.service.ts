@@ -39,6 +39,10 @@ export class AppService {
       }
     });
     const upload = multer({ storage });
-    return upload
+    return upload;
+  }
+
+  uploadFile(file: Express.Multer.File){
+    
   }
 }
