@@ -9,8 +9,6 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ExtracurricularModule } from './extracurricular/extracurricular.module';
 import { DocumentModule } from './document/document.module';
-import { FileModule } from './file/file.module';
-import { FileController } from './file/file.controller';
 
 @Module({
   imports: [
@@ -20,9 +18,8 @@ import { FileController } from './file/file.controller';
       'mongodb+srv://vulong2203:Vulong2003@users.cz5ftf6.mongodb.net/',
     ),
     // GpaModule,
-    UserModule,
-    FileModule,
-    // AuthModule,
+    // UserModule,
+    AuthModule,
     // ExtracurricularModule,
     // DocumentModule,
   ],
