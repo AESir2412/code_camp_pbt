@@ -20,7 +20,7 @@ export class AuthService {
         const userExists = await this.userService.findUserByEmail(user.email);
         if (!userExists) {
             return this.registerUser({
-                id: new mongoose.Types.ObjectId(),
+                _id: new mongoose.Types.ObjectId(),
                 username: user.name,
                 email: user.email
             })
@@ -35,7 +35,7 @@ export class AuthService {
             if (!newUser) {
                 console.log('1');
             }
-            return newUser.id.toString();
+            return newUser._id.toString();
         } catch {
             throw new InternalServerErrorException();   
         }

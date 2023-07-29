@@ -5,11 +5,11 @@ import { Post } from 'src/post/post.model';
 
 @Schema()
 export class Comment {
+  @Prop({default: new mongoose.Types.ObjectId})
+  _id : mongoose.Schema.Types.ObjectId;
+
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Owner', required: true })
     owner: User;
-
-    @Prop({unique: true, default: new mongoose.Types.ObjectId})
-    id : mongoose.Schema.Types.ObjectId;
 
   @Prop({ required: true })
     text: String

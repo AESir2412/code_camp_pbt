@@ -6,12 +6,13 @@ import { UserDto } from './user.dto'
 import * as bcrypt from 'bcrypt';
 import { Request, Response, NextFunction } from 'express';
 import { REQUEST } from '@nestjs/core';
-import bodyParser from 'body-parser'
+import bodyParser from 'body-parser';
+import { endOfDay, startOfDay } from 'date-fns';
 
 interface User {
-  id: mongoose.Types.ObjectId;
-  username: String;
-  email: String;
+  _id: mongoose.Types.ObjectId;
+  username: string;
+  email: string;
 }
 
 @Injectable()
@@ -23,12 +24,12 @@ export class UserService {
         return createdUser.save();
     }
 
-  findUserByEmail = async (email: String) => {
+  findUserByEmail = async (email: string) => {
     const user = await this.userModel.findOne({email: email})
     return user;
   };
 
-  findUserByUsername = async (username: String) => {
+  findUserByUsername = async (username: string) => {
     const user = await this.userModel.findOne({username: username});
     return user;
   };
@@ -39,7 +40,18 @@ export class UserService {
   }
 
   updateLastOnline = async (email: string) => {
-      (await this.userModel.findOne({email: email})).lastOnline = new Date();
+    let old = await this.userModel.findOne({email: email});
+    old.lastOnline = new Date();
+    return await old.save();
+  }
+
+  findAllToday = () => {
+    return this.userModel.find({
+      lastOnline: {
+        $gte: startOfDay(new Date()),
+        $lte: endOfDay(new Date())
+      }
+    })
   }
 }
 

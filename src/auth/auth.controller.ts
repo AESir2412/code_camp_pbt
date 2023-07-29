@@ -9,11 +9,11 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Get('google')
-    @UseGuards(GoogleOAuthGuard)
+    // @UseGuards(GoogleOAuthGuard)
     async auth() {}
 
     @Get('google/callback')
-    @UseGuards(GoogleOAuthGuard)
+    // @UseGuards(GoogleOAuthGuard)
     async Callback(@Req() req, @Res({passthrough: true}) res: Response) {
         const token = await this.authService.signIn(req.user);
 
