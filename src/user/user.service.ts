@@ -31,6 +31,11 @@ export class UserService {
   findUserByUsername = async (username: String) => {
     const user = await this.userModel.findOne({username: username});
     return user;
+  };
+
+  findUserById = async  (id: string) => {
+    const user = await this.userModel.findOne(new mongoose.Types.ObjectId(id))
+    return user;
   }
 }
 
