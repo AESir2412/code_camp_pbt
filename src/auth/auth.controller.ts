@@ -24,6 +24,6 @@ export class AuthController {
         });
 
         // return res.status(HttpStatus.OK);
-        return "Login succeeded"
+        return 'Welcome to VIM';
     }
 }
