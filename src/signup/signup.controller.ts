@@ -4,13 +4,10 @@ import { SignupDto } from './signup.dto';
 
 @Controller('signup') //http://localhost:8000/signup
 export class SignupController {
+  constructor(private readonly signupService: SignupService) {}
 
-    constructor(
-        private readonly signupService:SignupService
-    ){}
-
-    @Post()
-    signup(@Body() signupDto: SignupDto){
-        return this.signupService.signup(signupDto);
-    }
+  @Post()
+  signup(@Body() signupDto: SignupDto) {
+    return this.signupService.signup(signupDto);
+  }
 }

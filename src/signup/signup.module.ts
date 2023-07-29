@@ -5,13 +5,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { SignupSchema } from './signup.model';
 
 @Module({
-  imports:[
-    MongooseModule.forFeature([{
-      name: "Signup",
-      schema: SignupSchema
-    }])
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: 'Signup',
+        schema: SignupSchema,
+      },
+    ]),
   ],
   controllers: [SignupController],
-  providers: [SignupService]
+  providers: [SignupService],
 })
 export class SignupModule {}
