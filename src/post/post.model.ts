@@ -22,7 +22,7 @@ export class Post {
     @Prop({ required: true })
         text: String
 
-    @Prop({type: Date, default: Date.now()})
+    @Prop({type: Date, default: new Date()})
         timestamp: Date
 }
 

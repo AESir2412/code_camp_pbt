@@ -12,6 +12,9 @@ export class User {
 
   @Prop({ unique: true })
   email: String;
+
+  @Prop({ type: Date, default: new Date()})
+  lastOnline: Date;
 }
 
 export const user = createParamDecorator((data, req) => {

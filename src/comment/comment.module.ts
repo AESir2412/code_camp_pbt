@@ -12,6 +12,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       },
     ]),
   ],
-  providers: [CommentService]
+  providers: [CommentService],
+  
 })
 export class CommentModule {}

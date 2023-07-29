@@ -37,6 +37,10 @@ export class UserService {
     const user = await this.userModel.findOne(new mongoose.Types.ObjectId(id))
     return user;
   }
+
+  updateLastOnline = async (email: string) => {
+      (await this.userModel.findOne({email: email})).lastOnline = new Date();
+  }
 }
 
 
