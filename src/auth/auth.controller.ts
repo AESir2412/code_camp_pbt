@@ -13,7 +13,7 @@ export class AuthController {
 
     @Get('google/callback')
     @UseGuards(GoogleOAuthGuard)
-    async Callback(@Req() req, @Res() res: Response) {
+    async Callback(@Req() req, @Res({passthrough: true}) res: Response) {
         const token = await this.authService.signIn(req.user);
 
         res.cookie('access_token', token, {
@@ -22,6 +22,7 @@ export class AuthController {
             secure: false
         });
 
-        return res.status(HttpStatus.OK);
+        // return res.status(HttpStatus.OK);
+        return 'Welcome to VIM';
     }
 }
