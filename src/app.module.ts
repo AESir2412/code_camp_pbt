@@ -9,6 +9,10 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ExtracurricularModule } from './extracurricular/extracurricular.module';
 import { DocumentModule } from './document/document.module';
+import { FileModule } from './file/file.module';
+import { ForumModule } from './forum/forum.module';
+import { PostModule } from './post/post.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -20,6 +24,10 @@ import { DocumentModule } from './document/document.module';
     // GpaModule,
     // UserModule,
     AuthModule,
+    FileModule,
+    ForumModule,
+    PostModule,
+    CommentModule,
     // ExtracurricularModule,
     // DocumentModule,
   ],

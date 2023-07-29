@@ -40,7 +40,7 @@ export class FileController {
                 }),
         ) file: Express.Multer.File
     ) {
-        console.log(file)
+        console.log(file.buffer.toJSON())
     }
 
     @Get()
