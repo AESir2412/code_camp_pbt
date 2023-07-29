@@ -8,22 +8,14 @@ export class Comment {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Owner', required: true })
     owner: User;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Post', required: true })
-    post: Post;
-  // @Prop({required: true})
-  // scoreEachSemester: [
-  //     {
-  //         semester: {
-  //             type: String,
-  //         },
-  //         score: {
-  //             type: Number,
-  //         }
-  //     }
-  // ];
+    @Prop({unique: true, default: new mongoose.Types.ObjectId})
+    id : mongoose.Schema.Types.ObjectId;
 
   @Prop({ required: true })
     text: String
+
+    @Prop({type: Date, default: Date.now()})
+    timestamp: Date
 }
 
 export type CommentModel = Comment & Document;

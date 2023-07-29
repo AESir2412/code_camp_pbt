@@ -10,14 +10,20 @@ export class Post {
     @Prop({unique: true, default: new mongoose.Types.ObjectId})
         id : mongoose.Types.ObjectId;
 
-    @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Upvoters"})
+    @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: "Upvoters"}]})
         upvoters: User[]
     
-    @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Downvoters"})
+    @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: "Upvoters"}]})
         downvoters: User[]
+
+    @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: "Comments"}]})
+        comments: Comment[]
 
     @Prop({ required: true })
         text: String
+
+    @Prop({type: Date, default: Date.now()})
+        timestamp: Date
 }
 
 export type PostModel = Post & Document;

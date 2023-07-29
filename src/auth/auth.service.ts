@@ -28,7 +28,7 @@ export class AuthService {
         }
 
         return this.generateJwt({
-            sub: userExists.id,
+            sub: userExists.id.toString(),
             email: userExists.email
         });
     }
@@ -36,8 +36,9 @@ export class AuthService {
     async registerUser(user: UserDto) {
         try {
             const newUser = await this.userService.createUser(user);
+            console.log(newUser);
             return this.generateJwt({
-                // sub: newUser.id,
+                sub: newUser.id.toString(),
                 email: newUser.email
             });
         } catch {
