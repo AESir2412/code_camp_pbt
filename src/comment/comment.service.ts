@@ -23,4 +23,9 @@ export class CommentService {
         const createdComment = new this.commentModel(commentDto);
         return createdComment.save();
     }
+
+    findCommentByOwnerId = async (ownerId: string) => {
+        const comment = this.commentModel.findOne({owner: new mongoose.Types.ObjectId(ownerId)});
+        return comment;
+      }
 }
