@@ -34,4 +34,8 @@ export class PostService {
         }
         return post;
     }
+
+    findAllPost = async () => {
+        return await this.postModel.find({})
+    }
 }

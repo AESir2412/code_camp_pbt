@@ -16,10 +16,14 @@ export class DashboardController {
         return this.userService.findAllToday()
     }
 
-    // @Get('dashboard/posts')
-    // async returnAllPosts(): Promise<PostDto[]> {
-    //     return this.postService.findAllPost()
-    // }
+    @Get('dashboard/users')
+    async returnAllUser(): Promise<UserDto[]> {
+        return this.userService.findAllUser()
+    }
 
+    @Get('dashboard/posts')
+    async returnAllPosts(): Promise<any>{
+        return this.postService.findAllPost();
+    }
 
 }

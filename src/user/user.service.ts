@@ -54,6 +54,10 @@ export class UserService {
       }
     })
   }
+
+  findAllUser = () => {
+    return this.userModel.find({})
+  }
 }
 
 
