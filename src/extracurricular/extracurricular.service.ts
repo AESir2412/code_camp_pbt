@@ -6,7 +6,7 @@ import { ExtracurricularModel } from './extracurricular.model';
 @Injectable()
 export class ExtracurricularService {
   constructor(
-    @InjectModel('GPA')
+    @InjectModel('Extracurricular')
     private ExtracurricularModel: Model<ExtracurricularModel>,
   ) {}
 

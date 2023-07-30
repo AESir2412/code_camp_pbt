@@ -8,7 +8,7 @@ export class Extracurricular {
   owner: User;
 
   @Prop({})
-  proofs: [ggDriveLink: String];
+  proofs: [ggDriveLink: string];
 }
 
 export type ExtracurricularModel = Extracurricular & Document;

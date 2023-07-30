@@ -9,7 +9,7 @@ import { User } from 'src/user/user.model';
 
 interface Comment {
     owner: User;
-      id : mongoose.Types.ObjectId;
+    //   _id : mongoose.Types.ObjectId;
       text: String
       timestamp: Date
   }

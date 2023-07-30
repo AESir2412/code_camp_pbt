@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
 import { GpaService } from './gpa.service';
-import { UserModule } from 'src/user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { GPASchema } from './gpa.model';
 
 @Module({
   imports: [
-    UserModule
+    MongooseModule.forFeature([
+      {
+        name: 'GPA',
+        schema: GPASchema
+      }
+    ])
   ],
   providers: [GpaService],
 })

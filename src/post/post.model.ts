@@ -7,8 +7,8 @@ export class Post {
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Owner', required: true })
         owner: User;
 
-    @Prop({unique: true, default: new mongoose.Types.ObjectId})
-        id : mongoose.Types.ObjectId;
+    @Prop({default: new mongoose.Types.ObjectId})
+        _id : mongoose.Types.ObjectId;
 
     @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: "Upvoters"}]})
         upvoters: User[]

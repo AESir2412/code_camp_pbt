@@ -4,17 +4,20 @@ import * as mongoose from 'mongoose';
 
 @Schema()
 export class User {
-    @Prop({unique: true, default: new mongoose.Types.ObjectId})
-    id : mongoose.Types.ObjectId;
+    @Prop({default: new mongoose.Types.ObjectId})
+    _id : mongoose.Types.ObjectId;
     
   @Prop({ unique: true })
-  username: String;
+  username: string;
 
   @Prop({ unique: true })
-  email: String;
+  email: string;
 
   @Prop({ type: Date, default: new Date()})
   lastOnline: Date;
+
+  @Prop({required: true, default: false})
+  isAdmin: boolean;
 }
 
 export const user = createParamDecorator((data, req) => {
