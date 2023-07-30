@@ -7,17 +7,8 @@ export class GPA {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Owner', required: true })
   owner: User;
 
-  // @Prop({required: true})
-  // scoreEachSemester: [
-  //     {
-  //         semester: {
-  //             type: String,
-  //         },
-  //         score: {
-  //             type: Number,
-  //         }
-  //     }
-  // ];
+  @Prop({})
+  link: String
 
   @Prop({ required: true })
   score: Number;
