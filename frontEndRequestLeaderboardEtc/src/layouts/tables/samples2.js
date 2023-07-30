@@ -1,0 +1,32 @@
+var users = [
+    {
+        userID: "1",
+        name: "Mai Ngọc Duy",
+        email: "abc@gmail.com",
+        departmentName: "2",
+        className: "2",
+        ranking: "1",
+        joined: "23/04/18",
+        score: "1000",
+    },
+    {
+        userID: "2", 
+        name: "Nguyễn Văn Huân",         
+        email: "abcd@gmail.com",
+        departmentName: "2",
+        className: "2",
+        ranking: "2",
+        joined: "23/05/18",
+        score: "900",
+    },
+    {
+        userID: "3",
+        name: "Vũ Thành Long",           
+        email: "abcde@gmail.com",
+        departmentName: "2",
+        className: "2",
+        ranking: "3",
+        joined: "23/04/19",
+        score: "800",
+    },
+];
