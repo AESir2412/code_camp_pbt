@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import bodyParser = require("body-parser");
 import * as cookieParser from 'cookie-parser';
+var cors = require('cors')
 
 declare const module: any;
 
