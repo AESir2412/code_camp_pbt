@@ -14,6 +14,7 @@ import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { TestModule } from './test/test.module';
 import { CreditModule } from './credit/credit.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { CreditModule } from './credit/credit.module';
     ExtracurricularModule,
     DocumentModule,
     CreditModule,
+    DashboardModule,
   ],
   // controllers: [AppController, AuthController],
   controllers: [AppController],

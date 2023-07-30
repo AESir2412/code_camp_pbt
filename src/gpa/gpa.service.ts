@@ -16,29 +16,7 @@ export class GpaService {
     @InjectModel('GPA') private gpaModel: Model<GPAModel>
   ) {}
 
-  findGPAByUsername = async (username: String) => {
-    const promise = new Promise<User>((resolve, reject) => {
-      setTimeout(() => {
-        const user = this.userService.findUserByUsername(username)
-        resolve(user)
-      }, 3000)
-    }) 
-
-    promise.then((user) => {
-      return this.gpaModel.findOne({user: user})
-    })
-  }
-
-  findGPAByEmail = async (email: String) => {
-    const promise = new Promise<User>((resolve, reject) => {
-      setTimeout(() => {
-        const user = this.userService.findUserByEmail(email)
-        resolve(user)
-      }, 3000)
-    }) 
-
-    promise.then((user) => {
-      return this.gpaModel.findOne({user: user})
-    })
+  findGPAByOwnerId = async (ownerId: string) => {
+    return await this.gpaModel.findOne({owner: new mongoose.Types.ObjectId(ownerId)})
   }
 }
