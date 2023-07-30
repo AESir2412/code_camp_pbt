@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 // @mui material components
 import Switch from "@mui/material/Switch";
@@ -42,10 +42,26 @@ const bgImage =
 const schoolBgImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Nha_dieu_hanh_144_Xuan_Thuy_26Jan2005-01s.jpg/1200px-Nha_dieu_hanh_144_Xuan_Thuy_26Jan2005-01s.jpg";
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Google from 'E:/UET CodeCamp/Final/src/layouts/authentication/sign-in/google.tsx';
+import Google from './google.tsx';
+import routes from 'routes'
+
+
+const getRoutes = (allRoutes) =>
+allRoutes.map((route) => {
+  if (route.collapse) {
+    return getRoutes(route.collapse);
+  }
+
+  if (route.route) {
+    return <Route exact path={route.route} element={route.component} key={route.key} />;
+  }
+
+  return null;
+});
 
 function Illustration() {
   const [rememberMe, setRememberMe] = useState(false);
+
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
@@ -53,7 +69,7 @@ function Illustration() {
     <IllustrationLayout
     color=""
       title="Sign In"
-      description="Sign in your account with"
+      description="Sign in your account with Google"
       illustration={{
         image: schoolBgImage,
         title: 'Đại học Quốc gia Hà Nội',
@@ -61,61 +77,14 @@ function Illustration() {
           "Đổi mới sáng tạo - Trách nhiệm quốc gia - Phát triển bền vững",
       }}
     > 
-      {/* <ArgonBox mb={2}>
-        <GoogleOAuthProvider clientId="739106075686-o3iq57fl19qmf50planckptdekklb1du.apps.googleusercontent.com">
-          <Google />
-        </GoogleOAuthProvider>
-        <Socials />
-      </ArgonBox> */}
-
-      {/* Google shit */}
-      <GoogleOAuthProvider clientId="739106075686-o3iq57fl19qmf50planckptdekklb1du.apps.googleusercontent.com">
-          <Google />
-      </GoogleOAuthProvider>
+      <ArgonButton 
+      route = "http://localhost:8000/auth/google"
+      title = "Google" 
+      name  = "Google"
+      size = "large"
+      >
+      </ArgonButton>
       
-      {/* <ArgonBox px={3}>
-        <Separator />
-      </ArgonBox> */}
-
-      <ArgonBox component="form" role="form">
-        {/* <ArgonBox mb={2}>
-          <ArgonInput type="email" placeholder="Email" size="large" />
-        </ArgonBox>
-        <ArgonBox mb={2}>
-          <ArgonInput type="password" placeholder="Password" size="large" />
-        </ArgonBox>
-        <ArgonBox display="flex" alignItems="center">
-          <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-          <ArgonTypography
-            variant="button"
-            fontWeight="regular"
-            onClick={handleSetRememberMe}
-            sx={{ cursor: "pointer", userSelect: "none" }}
-          >
-            &nbsp;&nbsp;Remember me
-          </ArgonTypography>
-        </ArgonBox> */}
-
-        {/* <ArgonBox mt={4} mb={1}>
-          <ArgonButton color="info" size="large" fullWidth>
-            Sign In
-          </ArgonButton>
-        </ArgonBox> */}
-        {/* <ArgonBox mt={3} textAlign="center">
-          <ArgonTypography variant="button" color="text" fontWeight="regular">
-            You&apos;re an admin?{" "}
-            <ArgonTypography
-              component={Link}
-              to="/authentication/sign-in-admin"
-              variant="button"
-              color="vnu_text_color"
-              fontWeight="medium"
-            >
-              Sign In for Admin here
-            </ArgonTypography>
-          </ArgonTypography>
-        </ArgonBox> */}
-      </ArgonBox>
     </IllustrationLayout>
   );
 }

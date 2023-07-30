@@ -37,7 +37,6 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 import Requesting from "layouts/requesting";
-import VirtualReality from "layouts/virtual-reality";
 import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -102,7 +101,7 @@ const routes = [
     type: "route",
     name: "Sign In",
     key: "sign-in",
-    route: "/authentication/sign-in",
+    route: "http://localhost:8000/auth/google",
     icon: (
       <ArgonBox component="i" color="warning" fontSize="14px" className="ni ni-single-copy-04" />
     ),

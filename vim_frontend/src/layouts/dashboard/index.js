@@ -36,7 +36,7 @@ import typography from "assets/theme/base/typography";
 
 // Dashboard layout components
 import Slider from "layouts/dashboard/components/Slider";
-
+import axios from 'axios'
 // Data
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 import gradientLineChartData2 from "layouts/dashboard/data/gradientLineChartData2";
@@ -53,32 +53,34 @@ function Default() {
   const { size } = typography;
 
    // My definition :< ---------------------------------------------------
-  const [users, setUsers] = useState([])
+  let [users, setUsers] = useState([])
   const [uploads, setUploads] = useState([])
   const [posts, setPosts] = useState([])
 
-  const [userChart, setUserChart] = useState([])
+  let [userChart, setUserChart] = useState([])
   const [uploadChart, setUploadChart] = useState([])
   const [postChart, setPostChart] = useState([])
  
   const fetchUserData = () => {
-    fetch("/users", {method: "GET", headers: {'Content-Type': 'application/json'}})
-      .then(response => {
-        return response.json()
-      })
-      .then(dataUsers => {
-        setUsers(dataUsers)
-      })
+    return axios.get('http://localhost:8000/dashboard/users')
+    .then(function(res){
+      console.log(res)
+      setUsers(res.data)
+      console.log(users)
+    }).catch(function(error){
+      console.log(error)
+    })
   }
  
-  const fetchUploadData = () => {
-    fetch("127.0.0.1:8000/uploads", {method: "GET", headers: {'Content-Type': 'application/json'}})
-      .then(response => {
-        return response.json()
-      })
-      .then(dataUploads => {
-        setUploads(dataUploads)
-      })
+  const fetchUserTodayData = () => {
+    return axios.get('http://localhost:8000/dashboard/todayusers')
+    .then(function(res){
+      console.log(res)
+      setUserChart(res.data)
+      console.log(users)
+    }).catch(function(error){
+      console.log(error)
+    })
   }
 
   const fetchPostData = () => {
@@ -126,7 +128,7 @@ function Default() {
   }, [])
  
   useEffect(() => {
-    fetchUploadData()
+    fetchUserTodayData()
   }, [])
  
   useEffect(() => {
@@ -148,7 +150,6 @@ function Default() {
   // --------------------------------------------------------------------
 
   // Calculate the total number of users
-  const totalUsers = users.length;
 
   // Calculate the number of users who have lastOnline on the same day as today
   const today = new Date().toISOString().split('T')[0]; // Get today's date in "YYYY-MM-DD" format
@@ -167,7 +168,7 @@ function Default() {
           <Grid item xs={12} md={6} lg={3}>
             <DetailedStatisticsCard
               title="Total Users"
-              count= {totalUsers}
+              count= {users.length}
               icon={{ color: "info", component: <i className="ni ni-money-coins" /> }}
               // percentage={{ color: "success", count: "+55%", text: "since yesterday" }}
             />
@@ -175,25 +176,17 @@ function Default() {
           <Grid item xs={12} md={6} lg={3}>
             <DetailedStatisticsCard
               title="Today's Users"
-              count= {todayUsers}
+              count= {userChart.length}
               icon={{ color: "error", component: <i className="ni ni-world" /> }}
               // percentage={{ color: "success", count: "+3%", text: "since last week" }}
             />
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <DetailedStatisticsCard
-              title="Today's Uploads"
+              title="Score"
               count= {todayUploads}
               icon={{ color: "success", component: <i className="ni ni-paper-diploma" /> }}
               // percentage={{ color: "error", count: "-2%", text: "since last quarter" }}
-            />
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <DetailedStatisticsCard
-              title="Today's Posts"
-              count= {todayPosts}
-              icon={{ color: "warning", component: <i className="ni ni-cart" /> }}
-              // percentage={{ color: "success", count: "+5%", text: "than last month" }}
             />
           </Grid>
         </Grid>
@@ -201,19 +194,6 @@ function Default() {
           <Grid item xs={12} lg={7}>
             <GradientLineChart
               title="Users Overview"
-              // description={
-              //   <ArgonBox display="flex" alignItems="center">
-              //     <ArgonBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
-              //       <Icon sx={{ fontWeight: "bold" }}>arrow_upward</Icon>
-              //     </ArgonBox>
-              //     <ArgonTypography variant="button" color="text" fontWeight="medium">
-              //       4% more{" "}
-              //       <ArgonTypography variant="button" color="text" fontWeight="regular">
-              //         in 2022
-              //       </ArgonTypography>
-              //     </ArgonTypography>
-              //   </ArgonBox>
-              // }
               chart={userChart} //gradientLineChartData
             />
           </Grid>
@@ -221,15 +201,6 @@ function Default() {
             <Slider />
           </Grid>
         </Grid>
-        {/* <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <SalesTable title="Sales by Country" rows={salesTableData} />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <CategoriesList title="categories" categories={categoriesListData} />
-          </Grid>
-        </Grid> */}
-
 
         <Grid container spacing={3} mb={3}>
           <Grid item xs={12} lg={6}>
