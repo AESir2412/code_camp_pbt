@@ -23,6 +23,9 @@ export class AuthController {
             secure: false
         });
 
-    return res.status(HttpStatus.OK).send('SURTR!!!!!!');
+    return res.redirect('google/react');
     }
+
+    // @Get('google/react')
+    
 }
