@@ -1,10 +1,14 @@
-import { Body, Controller, Get, Header, Headers, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Header, Headers, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Response, Request } from 'express';
 import mongoose from 'mongoose';
 import { PostService } from 'src/post/post.service';
+import { Role } from 'src/role/role.decorator';
+import { RoleGuard } from 'src/role/role.guard';
 import { UserDto } from 'src/user/user.dto';
 import { UserService } from 'src/user/user.service';
 
+@Role('Admin')
+@UseGuards(RoleGuard)
 @Controller('test')
 export class TestController {
     constructor(

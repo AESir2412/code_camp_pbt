@@ -13,7 +13,6 @@ export class AuthService {
     ) {}
 
     async signIn(user) {
-        console.log(user);
         if (!user) {
             throw new BadRequestException('Unauthenticated');
         }
@@ -22,19 +21,17 @@ export class AuthService {
             return this.registerUser({
                 _id: new mongoose.Types.ObjectId(),
                 username: user.name,
-                email: user.email
+                email: user.email,
+                isAdmin: false
             })
         }
         
-        return userExists.id.toString();
+        return userExists._id.toString();
     }
     
     async registerUser(user: UserDto) {
         try {
             const newUser = await this.userService.createUser(user);
-            if (!newUser) {
-                console.log('1');
-            }
             return newUser._id.toString();
         } catch {
             throw new InternalServerErrorException();   
