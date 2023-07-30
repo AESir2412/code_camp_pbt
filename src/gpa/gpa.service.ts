@@ -7,40 +7,17 @@ import { UserService } from 'src/user/user.service';
 
 interface GPA {
   owner: User;
-  score: number;
+  score: Number;
 }
 
 @Injectable()
 export class GpaService {
   constructor(
-    @InjectModel('GPA') private gpaModel: Model<GPAModel>,
-    private userService: UserService
+    @InjectModel('GPA') private gpaModel: Model<GPAModel>
   ) {}
 
-  findGPAByUsername = async (username: string) => {
-    const promise = new Promise<User>((resolve, reject) => {
-      setTimeout(() => {
-        const user = this.userService.findUserByUsername(username)
-        resolve(user)
-      }, 3000)
-    }) 
-
-    promise.then((user) => {
-      return this.gpaModel.findOne({user: user})
-    })
-  }
-
-  findGPAByEmail = async (email: string) => {
-    const promise = new Promise<User>((resolve, reject) => {
-      setTimeout(() => {
-        const user = this.userService.findUserByEmail(email)
-        resolve(user)
-      }, 3000)
-    }) 
-
-    promise.then((user) => {
-      return this.gpaModel.findOne({user: user})
-    })
+  findGPAByOwnerId = async (ownerId: string) => {
+    return await this.gpaModel.findOne({owner: new mongoose.Types.ObjectId(ownerId)})
   }
 
   findGPAByID = async (id: string) => {

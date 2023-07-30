@@ -7,7 +7,7 @@ declare const module: any;
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule ,{cors:true});
   app.use(bodyParser.json());
   app.use(cookieParser());
   await app.listen(8000);
