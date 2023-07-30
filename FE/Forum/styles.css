@@ -1,0 +1,52 @@
+/* Định dạng cho textbox */
+.w3-input {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của thẻ cha */
+    padding: 12px 20px; /* Khoảng cách giữa nội dung và viền của textbox */
+    margin: 8px 0; /* Khoảng cách với các phần tử khác */
+    box-sizing: border-box; /* Tính cả padding và border vào chiều rộng của textbox */
+    border: 1px solid #ccc; /* Viền của textbox */
+    border-radius: 4px; /* Góc bo tròn cho viền */
+  }
+  
+  /* Hover effect khi rê chuột vào textbox */
+  .w3-input:hover {
+    border-color: #888; /* Thay đổi màu viền khi rê chuột vào */
+  }
+  
+  /* Focus effect khi textbox được chọn */
+  .w3-input:focus {
+    border-color: #555; /* Thay đổi màu viền khi được chọn */
+  }
+  
+
+  
+
+  .comment-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+  
+  .comment-content {
+    display: block;
+    /* Thêm thuộc tính max-width */
+    max-width: 450px;
+    word-wrap: break-word; /* Hoặc có thể sử dụng overflow-wrap: break-word; */
+  }
+  
+  .comment-time {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+
