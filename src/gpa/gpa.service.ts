@@ -19,4 +19,8 @@ export class GpaService {
   findGPAByOwnerId = async (ownerId: string) => {
     return await this.gpaModel.findOne({owner: new mongoose.Types.ObjectId(ownerId)})
   }
+
+  findGPAByID = async (id: string) => {
+    return await this.gpaModel.findOne({owner: new mongoose.Types.ObjectId(id)});
+  }
 }
