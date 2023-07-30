@@ -33,6 +33,7 @@
     "@types/passport-jwt": "^3.0.9",
     "@types/passport-local": "^1.0.35",
     "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "date-fns": "^2.30.0",
     "graphql": "^16.7.1",
     "mongoose": "^7.4.1",

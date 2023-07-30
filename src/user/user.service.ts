@@ -13,6 +13,7 @@ interface User {
   _id: mongoose.Types.ObjectId;
   username: string;
   email: string;
+  isAdmin: boolean
 }
 
 @Injectable()

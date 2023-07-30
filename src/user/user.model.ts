@@ -15,6 +15,9 @@ export class User {
 
   @Prop({ type: Date, default: new Date()})
   lastOnline: Date;
+
+  @Prop({required: true, default: false})
+  isAdmin: boolean;
 }
 
 export const user = createParamDecorator((data, req) => {

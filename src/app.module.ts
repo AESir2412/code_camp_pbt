@@ -22,7 +22,7 @@ import { TestModule } from './test/test.module';
       'mongodb+srv://vulong2203:Vulong2003@users.cz5ftf6.mongodb.net/',
     ),
     // GpaModule,
-    // UserModule,
+    UserModule,
     AuthModule,
     // ForumModule,
     // PostModule,

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Header, Headers, Post, Req, Res } from '@nestjs/common';
 import { Response, Request } from 'express';
 import mongoose from 'mongoose';
 import { PostService } from 'src/post/post.service';
@@ -35,7 +35,8 @@ export class TestController {
         return await this.userService.createUser({
             _id: new mongoose.Types.ObjectId(),
             username: req.name,
-            email: req.email
+            isAdmin: false,
+            email: req.email,
         });
     }
     
@@ -57,5 +58,10 @@ export class TestController {
     @Post('post/getByAuthor')
     async getPostThroughAuthor(@Body() req): Promise<any> {
         return await this.postServie.getPostbyAuthor((await this.userService.findUserByUsername(req.name))._id.toString());
+    }
+
+    @Get('cookie')
+    getCookie(@Req() req: Request) {
+        return req.cookies['access'];
     }
 }
