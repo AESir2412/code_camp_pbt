@@ -26,4 +26,9 @@ export class DashboardController {
         return this.postService.getAllPosts();
     }
 
+    @Get('usersbyEmail')
+    async returnUserScore(email:string): Promise<number> {
+        return (await this.userService.findUserByEmail(email)).score
+    }
+
 }

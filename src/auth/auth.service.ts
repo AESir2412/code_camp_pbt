@@ -16,13 +16,15 @@ export class AuthService {
         if (!user) {
             throw new BadRequestException('Unauthenticated');
         }
-        const userExists = await this.userService.findUserByEmail(user.email);
+        const userExists = await this.userService.findUserByEmail(user.mail)
         if (!userExists) {
             return this.registerUser({
                 _id: new mongoose.Types.ObjectId(),
                 username: user.name,
+                lastOnline: new Date(),
                 email: user.email,
-                isAdmin: false
+                isAdmin: false,
+                score: user.score,
             })
         }
         
@@ -31,8 +33,9 @@ export class AuthService {
     
     async registerUser(user: UserDto) {
         try {
-            const newUser = await this.userService.createUser(user);
-            return newUser._id.toString();
+            // const newUser = await this.userService.createUser(user);
+            // return newUser._id.toString();
+            return '123';
         } catch {
             throw new InternalServerErrorException();   
         }

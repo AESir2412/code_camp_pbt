@@ -9,11 +9,11 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Get('google')
-    // @UseGuards(GoogleOAuthGuard)
+    @UseGuards(GoogleOAuthGuard)
     async auth() {}
 
     @Get('google/callback')
-    // @UseGuards(GoogleOAuthGuard)
+    @UseGuards(GoogleOAuthGuard)
     async Callback(@Req() req, @Res() res: Response) {
         const token = await this.authService.signIn(req.user);
 
@@ -23,7 +23,7 @@ export class AuthController {
             secure: false
         });
 
-    return res.redirect('google/react');
+    return res.redirect('http://localhost:3000/dashboard');
     }
 
     // @Get('google/react')

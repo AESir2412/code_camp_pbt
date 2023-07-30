@@ -34,15 +34,15 @@ export class TestController {
         return await this.userService.findUserByUsername(username);
     }
 
-    @Post('user/create')
-    async createTestUser(@Body() req): Promise<UserDto> {
-        return await this.userService.createUser({
-            _id: new mongoose.Types.ObjectId(),
-            username: req.name,
-            isAdmin: false,
-            email: req.email,
-        });
-    }
+    // @Post('user/create')
+    // async createTestUser(@Body() req): Promise<UserDto> {
+    //     return await this.userService.createUser({
+    //         _id: new mongoose.Types.ObjectId(),
+    //         username: req.name,
+    //         isAdmin: false,
+    //         email: req.email,
+    //     });
+    // }
     
     @Post('post/create')
     async createTestPost(@Body() req): Promise<any> {

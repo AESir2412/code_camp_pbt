@@ -13,7 +13,9 @@ interface User {
   _id: mongoose.Types.ObjectId;
   username: string;
   email: string;
-  isAdmin: boolean
+  lastOnline: Date;
+  isAdmin: boolean;
+  score: number
 }
 
 @Injectable()
@@ -22,7 +24,11 @@ export class UserService {
 
     async createUser(userDto: UserDto): Promise<User> {
         const createdUser = new this.userModel(userDto);
-        return createdUser.save();
+        try {
+          return createdUser.save();
+        } catch (err) {
+          console.log(err)
+        }
     }
 
   findUserByEmail = async (email: string) => {
