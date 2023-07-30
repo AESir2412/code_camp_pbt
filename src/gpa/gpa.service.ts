@@ -7,7 +7,7 @@ import { UserService } from 'src/user/user.service';
 
 interface GPA {
   owner: User;
-  score: Number;
+  score: number;
 }
 
 @Injectable()
@@ -17,7 +17,7 @@ export class GpaService {
     private userService: UserService
   ) {}
 
-  findGPAByUsername = async (username: String) => {
+  findGPAByUsername = async (username: string) => {
     const promise = new Promise<User>((resolve, reject) => {
       setTimeout(() => {
         const user = this.userService.findUserByUsername(username)
@@ -30,7 +30,7 @@ export class GpaService {
     })
   }
 
-  findGPAByEmail = async (email: String) => {
+  findGPAByEmail = async (email: string) => {
     const promise = new Promise<User>((resolve, reject) => {
       setTimeout(() => {
         const user = this.userService.findUserByEmail(email)

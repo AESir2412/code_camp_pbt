@@ -8,10 +8,10 @@ export class GPA {
   owner: User;
 
   @Prop({})
-  link: String
+  link: string
 
   @Prop({ required: true })
-  score: Number;
+  score: number;
 }
 
 export type GPAModel = GPA & Document;
