@@ -9,6 +9,5 @@ export class ExtracurricularService {
     @InjectModel('Extracurricular')
     private ExtracurricularModel: Model<ExtracurricularModel>,
   ) {}
-
   
 }

@@ -18,6 +18,9 @@ export class User {
 
   @Prop({required: true, default: false})
   isAdmin: boolean;
+
+  @Prop({default: 0.0})
+  score: number;
 }
 
 export const user = createParamDecorator((data, req) => {

@@ -24,6 +24,9 @@ export class Post {
 
     @Prop({type: Date, default: new Date()})
         timestamp: Date
+
+    @Prop({default: 0.0})
+        trending_score: number
 }
 
 export type PostModel = Post & Document;

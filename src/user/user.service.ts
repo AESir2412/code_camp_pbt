@@ -54,6 +54,12 @@ export class UserService {
       }
     })
   }
+
+  updateScore = async (userID: string, score: number) => {
+    let user = await this.userModel.findOne({_id: new mongoose.Types.ObjectId(userID)});
+    user.score = score;
+    return await user.save();
+  }
 }
 
 

@@ -8,7 +8,7 @@ import { UserDto } from 'src/user/user.dto';
 import { UserService } from 'src/user/user.service';
 
 @Role('Admin')
-@UseGuards(RoleGuard)
+// @UseGuards(RoleGuard)
 @Controller('test')
 export class TestController {
     constructor(
@@ -62,6 +62,11 @@ export class TestController {
     @Post('post/getByAuthor')
     async getPostThroughAuthor(@Body() req): Promise<any> {
         return await this.postServie.getPostbyAuthor((await this.userService.findUserByUsername(req.name))._id.toString());
+    }
+
+    @Get('post/all')
+    getAllPost() {
+        return this.postServie.getAllPosts();
     }
 
     @Get('cookie')
